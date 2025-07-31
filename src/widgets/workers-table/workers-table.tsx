@@ -112,7 +112,7 @@ export function WorkersTable({ workers }: { workers: Worker[] }) {
 						},
 					}}
 					rowsPerPageOptions={[5, 10, 25, 50]}>
-					{columns(toast, handleConfirmDelete, handleEdit).map((column, index) => (
+					{columns(handleConfirmDelete, handleEdit).map((column, index) => (
 						<PrimeColumn
 							key={index}
 							bodyClassName={cn(
