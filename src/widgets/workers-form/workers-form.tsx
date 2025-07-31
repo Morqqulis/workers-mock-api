@@ -1,5 +1,6 @@
 import { useDialogStore } from '@/features/workers'
 import { BorderBeam } from '@/shared/ui/custom/border-beam'
+import { cn } from '@/shared/utils'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { apiInstance } from '@shared/api/instance'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
@@ -12,7 +13,6 @@ import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { workerSchema, type WorkerSchema } from './schema'
 import type { WorkersFormProps } from './types'
-import { cn } from '@/shared/utils'
 
 type FormData = z.infer<typeof workerSchema>
 
@@ -120,27 +120,27 @@ export function WorkersForm({ type = 'create', defaultValues, toastRef }: Worker
 
 	return (
 		<motion.div
-			className='bg-gradient-to-tl from-blue-800/10 to-red-700/10 p-6 border border-zinc-500/10 rounded-2xl overflow-hidden'
+			className={`bg-gradient-to-tl from-blue-800/10 to-red-700/10 p-6 border border-zinc-500/10 rounded-2xl overflow-hidden`}
 			variants={containerVariants}
 			initial='hidden'
 			animate='visible'>
-			<motion.div className='mb-10 text-center' variants={itemVariants}>
-				<h2 className='mb-2 font-semibold text-surface-900 dark:text-surface-0 text-2xl'>
+			<motion.div className={`mb-10 text-center`} variants={itemVariants}>
+				<h2 className={`mb-2 font-semibold text-surface-900 dark:text-surface-0 text-2xl`}>
 					{type === 'create' ? 'Add Worker' : 'Edit Worker'}
 				</h2>
-				<p className='text-surface-600 dark:text-surface-400'>Fill in the worker information</p>
+				<p className={`text-surface-600 dark:text-surface-400`}>Fill in the worker information</p>
 			</motion.div>
 
-			<form onSubmit={handleSubmit(onSubmit)} className='space-y-8 rounded-xl'>
-				<motion.div className='gap-8 grid grid-cols-1 md:grid-cols-2' variants={itemVariants}>
-					<div className='space-y-1'>
+			<form onSubmit={handleSubmit(onSubmit)} className={`space-y-8 rounded-xl`}>
+				<motion.div className={`gap-8 grid grid-cols-1 md:grid-cols-2`} variants={itemVariants}>
+					<div className={`space-y-1`}>
 						<FloatLabel>
-							<InputText size={10} id='firstName' {...register('firstName')} className='w-full' autoComplete='on' />
+							<InputText size={10} id='firstName' {...register('firstName')} className={`w-full`} autoComplete='on' />
 							<label htmlFor='firstName'>First Name</label>
 						</FloatLabel>
 						{errors.firstName && (
 							<motion.p
-								className='text-red-500 text-sm'
+								className={`text-red-500 text-sm`}
 								initial={{ opacity: 0, height: 0 }}
 								animate={{ opacity: 1, height: 'auto' }}
 								transition={{ duration: 0.2 }}>
@@ -149,14 +149,14 @@ export function WorkersForm({ type = 'create', defaultValues, toastRef }: Worker
 						)}
 					</div>
 
-					<div className='space-y-1'>
+					<div className={`space-y-1`}>
 						<FloatLabel>
-							<InputText id='lastName' {...register('lastName')} className='w-full' autoComplete='on' />
+							<InputText id='lastName' {...register('lastName')} className={`w-full`} autoComplete='on' />
 							<label htmlFor='lastName'>Last Name</label>
 						</FloatLabel>
 						{errors.lastName && (
 							<motion.p
-								className='text-red-500 text-sm'
+								className={`text-red-500 text-sm`}
 								initial={{ opacity: 0, height: 0 }}
 								animate={{ opacity: 1, height: 'auto' }}
 								transition={{ duration: 0.2 }}>
@@ -166,15 +166,15 @@ export function WorkersForm({ type = 'create', defaultValues, toastRef }: Worker
 					</div>
 				</motion.div>
 
-				<motion.div className='gap-8 grid grid-cols-1 md:grid-cols-2' variants={itemVariants}>
-					<div className='space-y-1'>
+				<motion.div className={`gap-8 grid grid-cols-1 md:grid-cols-2`} variants={itemVariants}>
+					<div className={`space-y-1`}>
 						<FloatLabel>
-							<InputText id='email' {...register('email')} className='w-full' autoComplete='on' />
+							<InputText id='email' {...register('email')} className={`w-full`} autoComplete='on' />
 							<label htmlFor='email'>Email</label>
 						</FloatLabel>
 						{errors.email && (
 							<motion.p
-								className='text-red-500 text-sm'
+								className={`text-red-500 text-sm`}
 								initial={{ opacity: 0, height: 0 }}
 								animate={{ opacity: 1, height: 'auto' }}
 								transition={{ duration: 0.2 }}>
@@ -183,14 +183,14 @@ export function WorkersForm({ type = 'create', defaultValues, toastRef }: Worker
 						)}
 					</div>
 
-					<div className='space-y-1'>
+					<div className={`space-y-1`}>
 						<FloatLabel>
-							<InputText id='position' {...register('position')} className='w-full' autoComplete='on' />
+							<InputText id='position' {...register('position')} className={`w-full`} autoComplete='on' />
 							<label htmlFor='position'>Position</label>
 						</FloatLabel>
 						{errors.position && (
 							<motion.p
-								className='text-red-500 text-sm'
+								className={`text-red-500 text-sm`}
 								initial={{ opacity: 0, height: 0 }}
 								animate={{ opacity: 1, height: 'auto' }}
 								transition={{ duration: 0.2 }}>
@@ -200,14 +200,14 @@ export function WorkersForm({ type = 'create', defaultValues, toastRef }: Worker
 					</div>
 				</motion.div>
 
-				<motion.div className='space-y-1' variants={itemVariants}>
+				<motion.div className={`space-y-1`} variants={itemVariants}>
 					<FloatLabel>
-						<InputText id='avatar' {...register('avatar')} className='w-full' autoComplete='on' />
+						<InputText id='avatar' {...register('avatar')} className={`w-full`} autoComplete='on' />
 						<label htmlFor='avatar'>Avatar URL</label>
 					</FloatLabel>
 					{errors.avatar && (
 						<motion.p
-							className='text-red-500 text-sm'
+							className={`text-red-500 text-sm`}
 							initial={{ opacity: 0, height: 0 }}
 							animate={{ opacity: 1, height: 'auto' }}
 							transition={{ duration: 0.2 }}>
@@ -216,9 +216,9 @@ export function WorkersForm({ type = 'create', defaultValues, toastRef }: Worker
 					)}
 				</motion.div>
 
-				<motion.div className='space-y-1' variants={itemVariants}>
-					<div className='flex justify-between items-center'>
-						<label className='block mb-2 font-medium text-surface-700 dark:text-surface-300 text-sm'>
+				<motion.div className={`space-y-1`} variants={itemVariants}>
+					<div className={`flex justify-between items-center`}>
+						<label className={`block mb-2 font-medium text-surface-700 dark:text-surface-300 text-sm`}>
 							Worker Status
 						</label>
 						<ToggleButton
@@ -231,13 +231,13 @@ export function WorkersForm({ type = 'create', defaultValues, toastRef }: Worker
 							className={cn('w-32 transition-colors duration-200')}
 						/>
 					</div>
-					<p className='text-surface-500 dark:text-surface-400 text-xs'>
+					<p className={`text-surface-500 dark:text-surface-400 text-xs`}>
 						{status ? 'Worker is currently active and available' : 'Worker is currently inactive'}
 					</p>
 				</motion.div>
 
 				<motion.div
-					className='flex justify-end gap-3 pt-4 border-surface-200 dark:border-surface-700 border-t'
+					className={`flex justify-end gap-3 pt-4 border-surface-200 dark:border-surface-700 border-t`}
 					variants={itemVariants}>
 					<Button
 						type='button'
@@ -268,7 +268,7 @@ export function WorkersForm({ type = 'create', defaultValues, toastRef }: Worker
 				borderWidth={2}
 				reverse
 				size={400}
-				className='from-transparent via-red-500 to-transparent'
+				className={`from-transparent via-red-500 to-transparent`}
 			/>
 			<BorderBeam
 				duration={6}
@@ -276,7 +276,7 @@ export function WorkersForm({ type = 'create', defaultValues, toastRef }: Worker
 				size={400}
 				borderWidth={2}
 				reverse
-				className='from-transparent via-emerald-500 to-transparent'
+				className={`from-transparent via-emerald-500 to-transparent`}
 			/>
 		</motion.div>
 	)

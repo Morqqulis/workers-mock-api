@@ -78,19 +78,7 @@ export function WorkersTable({ workers }: { workers: Worker[] }) {
 
 			<div
 				className={`p-4 border rounded-xl overflow-hidden h-full border-zinc-600/50  z-10  backdrop-blur-sm bg-gradient-to-tl from-blue-800 to-red-700/50`}>
-				<Dialog
-					className='w-full max-w-2xl'
-					closeOnEscape
-					visible={isOpen}
-					onHide={handleCloseDialog}
-					modal
-					header={false}
-					footer={false}
-					closable={true}
-					draggable={false}
-					resizable={false}>
-					<WorkersForm type='create' toastRef={toast} />
-				</Dialog>
+
 
 				<div className={`flex justify-between items-center mb-4 gap-4 w-full`}>
 					<h3 className={`text-2xl font-bold`}>Workers</h3>
@@ -124,7 +112,7 @@ export function WorkersTable({ workers }: { workers: Worker[] }) {
 						},
 					}}
 					rowsPerPageOptions={[5, 10, 25, 50]}>
-					{columns(handleConfirmDelete, handleEdit).map((column, index) => (
+					{columns(toast, handleConfirmDelete, handleEdit).map((column, index) => (
 						<PrimeColumn
 							key={index}
 							bodyClassName={cn(
@@ -138,17 +126,17 @@ export function WorkersTable({ workers }: { workers: Worker[] }) {
 						/>
 					))}
 				</PrimeDataTable>
-				<BorderBeam duration={6} borderWidth={5} size={400} className='from-transparent via-red-500 to-transparent' />
+				<BorderBeam duration={6} borderWidth={5} size={400} className={`from-transparent via-red-500 to-transparent`} />
 				<BorderBeam
 					duration={6}
 					delay={3}
 					size={400}
 					borderWidth={5}
-					className='from-transparent via-blue-500 to-transparent'
+					className={`from-transparent via-blue-500 to-transparent`}
 				/>
 
 				<Dialog
-					className='w-full max-w-2xl'
+					className={`w-full max-w-2xl`}
 					closeOnEscape
 					visible={isOpen}
 					onHide={handleCloseDialog}
